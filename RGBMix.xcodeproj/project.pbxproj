@@ -13,6 +13,7 @@
 		1278856A26E4EF4B00476322 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1278856826E4EF4B00476322 /* Main.storyboard */; };
 		1278856C26E4EF4C00476322 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1278856B26E4EF4C00476322 /* Assets.xcassets */; };
 		1278856F26E4EF4C00476322 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1278856D26E4EF4C00476322 /* LaunchScreen.storyboard */; };
+		12A3F58626E511560093A46D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3F58526E511560093A46D /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1278856B26E4EF4C00476322 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1278856E26E4EF4C00476322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1278857026E4EF4C00476322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12A3F58526E511560093A46D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = RGBMix/Storyboards/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,48 @@
 		1278856126E4EF4B00476322 /* RGBMix */ = {
 			isa = PBXGroup;
 			children = (
-				1278856226E4EF4B00476322 /* AppDelegate.swift */,
-				1278856426E4EF4B00476322 /* SceneDelegate.swift */,
-				1278856626E4EF4B00476322 /* ViewController.swift */,
-				1278856826E4EF4B00476322 /* Main.storyboard */,
-				1278856B26E4EF4C00476322 /* Assets.xcassets */,
-				1278856D26E4EF4C00476322 /* LaunchScreen.storyboard */,
-				1278857026E4EF4C00476322 /* Info.plist */,
+				12A3F58226E50C3F0093A46D /* App */,
+				12A3F58326E50C520093A46D /* ViewControllers */,
+				12A3F58026E50BF50093A46D /* Storyboards */,
+				12A3F58426E50C750093A46D /* Resources */,
 			);
 			path = RGBMix;
+			sourceTree = "<group>";
+		};
+		12A3F58026E50BF50093A46D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				1278856D26E4EF4C00476322 /* LaunchScreen.storyboard */,
+				1278856826E4EF4B00476322 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		12A3F58226E50C3F0093A46D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1278856226E4EF4B00476322 /* AppDelegate.swift */,
+				1278856426E4EF4B00476322 /* SceneDelegate.swift */,
+				1278857026E4EF4C00476322 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		12A3F58326E50C520093A46D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				12A3F58526E511560093A46D /* SettingsViewController.swift */,
+				1278856626E4EF4B00476322 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		12A3F58426E50C750093A46D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1278856B26E4EF4C00476322 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1278856726E4EF4B00476322 /* ViewController.swift in Sources */,
+				12A3F58626E511560093A46D /* SettingsViewController.swift in Sources */,
 				1278856326E4EF4B00476322 /* AppDelegate.swift in Sources */,
 				1278856526E4EF4B00476322 /* SceneDelegate.swift in Sources */,
 			);
@@ -288,7 +324,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q3NH456PVT;
-				INFOPLIST_FILE = RGBMix/Info.plist;
+				INFOPLIST_FILE = RGBMix/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +332,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.holybuddha.RGBMix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q3NH456PVT;
-				INFOPLIST_FILE = RGBMix/Info.plist;
+				INFOPLIST_FILE = RGBMix/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +351,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.holybuddha.RGBMix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
