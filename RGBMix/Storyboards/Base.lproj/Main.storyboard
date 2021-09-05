@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-736" y="-969"/>
         </scene>
-        <!--Main View Controller-->
+        <!--MainViewController-->
         <scene sceneID="LFH-Bm-YjO">
             <objects>
-                <viewController id="gd4-49-i2E" userLabel="Main View Controller" sceneMemberID="viewController">
+                <viewController id="gd4-49-i2E" userLabel="MainViewController" customClass="MainViewController" customModule="RGBMix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g82-1S-N04">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,10 +46,10 @@
             </objects>
             <point key="canvasLocation" x="105" y="-970"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--SettingsViewController-->
         <scene sceneID="tBM-yU-dHF">
             <objects>
-                <viewController id="bbQ-qF-Agb" userLabel="Settings View Controller" customClass="SettingsViewController" customModule="RGBMix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bbQ-qF-Agb" userLabel="SettingsViewController" customClass="SettingsViewController" customModule="RGBMix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vSD-ei-zTo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,6 @@
                                 </state>
                                 <connections>
                                     <action selector="DoneButtonWhenPressed" destination="bbQ-qF-Agb" eventType="touchUpInside" id="TR0-RA-oMG"/>
-                                    <segue destination="uo0-uy-jY0" kind="presentation" identifier="BackToMainVC" modalPresentationStyle="fullScreen" id="a9W-dM-PEO"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Htl-of-EcH">
@@ -155,6 +154,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <connections>
                                                     <action selector="textFieldEdit:" destination="bbQ-qF-Agb" eventType="editingDidEnd" id="PMj-en-bEw"/>
+                                                    <outlet property="delegate" destination="bbQ-qF-Agb" id="wiW-8k-xPw"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="jaG-XD-2lg">
@@ -164,14 +164,16 @@
                                                 <connections>
                                                     <action selector="GreenColorTFEdit" destination="bbQ-qF-Agb" eventType="valueChanged" id="nUP-4g-DOL"/>
                                                     <action selector="textFieldEdit:" destination="bbQ-qF-Agb" eventType="editingDidEnd" id="RJy-mM-76Q"/>
+                                                    <outlet property="delegate" destination="bbQ-qF-Agb" id="6CR-Ck-Dfc"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-rk-WuG">
                                                 <rect key="frame" x="0.0" y="74" width="50" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <connections>
                                                     <action selector="textFieldEdit:" destination="bbQ-qF-Agb" eventType="editingDidEnd" id="djp-XK-rkA"/>
+                                                    <outlet property="delegate" destination="bbQ-qF-Agb" id="S0u-d9-Qi1"/>
                                                 </connections>
                                             </textField>
                                         </subviews>

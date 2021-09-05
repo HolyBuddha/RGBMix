@@ -23,6 +23,10 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet var viewForShowingColor: UIView!
     
+    var delegate: SettingsViewControllerDelegate!
+    
+    var defaultColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewForShowingColor.layer.cornerRadius = 20
@@ -34,11 +38,13 @@ class SettingsViewController: UIViewController {
         redColorTF.text = redColorValue.text
         greenColorTF.text = greenColorValue.text
         blueColorTF.text = blueColorValue.text
-        
+
         colorMixFromSliders()
     }
-
+    
     @IBAction func DoneButtonWhenPressed() {
+        delegate.changeColor(color: viewForShowingColor.backgroundColor ?? defaultColor)
+        dismiss(animated: true)
     }
     
     @IBAction func rgbSlider(_ sender: UISlider) {
@@ -57,17 +63,18 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func textFieldEdit (_ sender: UITextField) {
+        colorMixFromTextFileds()
         switch sender {
         case redColorTF:
-            let redColorTFValue = Float(redColorTF.text ?? "") ?? 0
+            let redColorTFValue = Float(redColorTF.text ?? "0") ?? 0
             redColorSlider.value = redColorTFValue
             redColorValue.text = String(redColorSlider.value)
         case greenColorTF:
-            let greenColorTFValue = Float(greenColorTF.text ?? "") ?? 0
+            let greenColorTFValue = Float(greenColorTF.text ?? "0") ?? 0
             greenColorSlider.value = greenColorTFValue
             greenColorValue.text = String(greenColorSlider.value)
         default:
-            let blueColorTFValue = Float(blueColorTF.text ?? "") ?? 0
+            let blueColorTFValue = Float(blueColorTF.text ?? "0") ?? 0
             blueColorSlider.value = blueColorTFValue
             blueColorValue.text = String(blueColorSlider.value)
         }
@@ -81,12 +88,33 @@ class SettingsViewController: UIViewController {
             alpha: 1
         )
     }
+    
+    private func colorMixFromTextFileds() {
+        let redColorTFValue = Float(redColorTF.text ?? "0") ?? 0
+        let greenColorTFValue = Float(greenColorTF.text ?? "0") ?? 0
+        let blueColorTFValue = Float(blueColorTF.text ?? "0") ?? 0
+        viewForShowingColor.backgroundColor = UIColor(
+            red: CGFloat(redColorTFValue),
+            green: CGFloat(greenColorTFValue),
+            blue: CGFloat(blueColorTFValue),
+            alpha: 1
+        )
+    }
 }
-
 
 extension SettingsViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == redColorTF {
+            greenColorTF.becomeFirstResponder()
+        } else if textField == greenColorTF {
+            blueColorTF.becomeFirstResponder()
+        } else {
+            redColorTF.becomeFirstResponder()
+        }
+        return true
     }
 }
