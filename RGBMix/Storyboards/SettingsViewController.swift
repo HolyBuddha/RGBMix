@@ -26,6 +26,8 @@ class SettingsViewController: UIViewController {
     var delegate: SettingsViewControllerDelegate!
     
     var defaultColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+    
+    var bgView: UIColor!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,8 @@ class SettingsViewController: UIViewController {
         redColorTF.text = redColorValue.text
         greenColorTF.text = greenColorValue.text
         blueColorTF.text = blueColorValue.text
-
+        
+        updateViewColor()
         colorMixFromSliders()
     }
     
@@ -81,7 +84,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func colorMixFromSliders() {
-        viewForShowingColor.backgroundColor = UIColor(
+            viewForShowingColor.backgroundColor = UIColor(
             red: CGFloat(redColorSlider.value),
             green: CGFloat(greenColorSlider.value),
             blue: CGFloat(blueColorSlider.value),
@@ -100,8 +103,12 @@ class SettingsViewController: UIViewController {
             alpha: 1
         )
     }
+    
+    private func updateViewColor() {
+        viewForShowingColor.backgroundColor = bgView
+    }
+    
 }
-
 extension SettingsViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

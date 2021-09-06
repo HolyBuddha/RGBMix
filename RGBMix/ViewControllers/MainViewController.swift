@@ -12,9 +12,10 @@ protocol SettingsViewControllerDelegate {
 }
 
 class MainViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let settingVC = segue.destination as? SettingsViewController else { return }
+        settingVC.bgView = view.backgroundColor
+        settingVC.delegate = self
     }
 }
 
