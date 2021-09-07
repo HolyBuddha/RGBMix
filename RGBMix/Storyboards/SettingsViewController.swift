@@ -25,8 +25,6 @@ class SettingsViewController: UIViewController {
     
     var delegate: SettingsViewControllerDelegate!
     
-    var defaultColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-    
     var bgView: UIColor!
 
     override func viewDidLoad() {
@@ -43,15 +41,17 @@ class SettingsViewController: UIViewController {
         
         updateViewColor()
         colorMixFromSliders()
+        colorMixFromTextFileds()
     }
     
     @IBAction func DoneButtonWhenPressed() {
-        delegate.changeColor(color: viewForShowingColor.backgroundColor ?? defaultColor)
+        delegate.changeColor(color: bgView)
         dismiss(animated: true)
     }
     
     @IBAction func rgbSlider(_ sender: UISlider) {
         colorMixFromSliders()
+        updateViewColor()
         switch sender {
         case redColorSlider:
             redColorValue.text = String(format: "%.2f", redColorSlider.value)
@@ -67,6 +67,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func textFieldEdit (_ sender: UITextField) {
         colorMixFromTextFileds()
+        updateViewColor()
         switch sender {
         case redColorTF:
             let redColorTFValue = Float(redColorTF.text ?? "0") ?? 0
@@ -84,7 +85,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func colorMixFromSliders() {
-            viewForShowingColor.backgroundColor = UIColor(
+            bgView = UIColor(
             red: CGFloat(redColorSlider.value),
             green: CGFloat(greenColorSlider.value),
             blue: CGFloat(blueColorSlider.value),
@@ -96,7 +97,7 @@ class SettingsViewController: UIViewController {
         let redColorTFValue = Float(redColorTF.text ?? "0") ?? 0
         let greenColorTFValue = Float(greenColorTF.text ?? "0") ?? 0
         let blueColorTFValue = Float(blueColorTF.text ?? "0") ?? 0
-        viewForShowingColor.backgroundColor = UIColor(
+        bgView = UIColor(
             red: CGFloat(redColorTFValue),
             green: CGFloat(greenColorTFValue),
             blue: CGFloat(blueColorTFValue),
@@ -107,6 +108,7 @@ class SettingsViewController: UIViewController {
     private func updateViewColor() {
         viewForShowingColor.backgroundColor = bgView
     }
+    
     
 }
 extension SettingsViewController: UITextFieldDelegate {
