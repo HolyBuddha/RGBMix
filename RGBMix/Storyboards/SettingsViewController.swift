@@ -24,9 +24,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet var viewForShowingColor: UIView!
     
     var delegate: SettingsViewControllerDelegate!
-    
     var bgView: UIColor!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewForShowingColor.layer.cornerRadius = 20
@@ -39,11 +38,12 @@ class SettingsViewController: UIViewController {
         greenColorTF.text = greenColorValue.text
         blueColorTF.text = blueColorValue.text
         
+        
         updateViewColor()
         colorMixFromSliders()
         colorMixFromTextFileds()
     }
-    
+
     @IBAction func DoneButtonWhenPressed() {
         delegate.changeColor(color: bgView)
         dismiss(animated: true)
@@ -107,9 +107,21 @@ class SettingsViewController: UIViewController {
     
     private func updateViewColor() {
         viewForShowingColor.backgroundColor = bgView
+        let ciColor = CIColor(color: bgView)
+                
+        redColorSlider.value = Float(ciColor.red)
+        greenColorSlider.value = Float(ciColor.green)
+        blueColorSlider.value = Float(ciColor.blue)
+        
+        redColorValue.text = String(format: "%.2f", redColorSlider.value)
+        greenColorValue.text = String(format: "%.2f", greenColorSlider.value)
+        blueColorValue.text = String(format: "%.2f", blueColorSlider.value)
+        
+        redColorTF.text = redColorValue.text
+        greenColorTF.text = greenColorValue.text
+        blueColorTF.text = blueColorValue.text
     }
-    
-    
+
 }
 extension SettingsViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
